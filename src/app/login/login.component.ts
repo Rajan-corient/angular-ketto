@@ -26,13 +26,15 @@ export class LoginComponent implements OnInit {
     this.signUpForm = new FormGroup({
       fname: new FormControl('', Validators.required),
       lname: new FormControl('', Validators.required),
+      userId: new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z0-9]*')]),
       email: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9.@]*')])
+      password: new FormControl('', [Validators.required, Validators.minLength(6), 
+                                     Validators.maxLength(12), Validators.pattern('[a-zA-Z0-9!@#$]*')])
     });
 
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9.@]*')])
+      userId: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required])
     });
   }
 
@@ -40,6 +42,8 @@ export class LoginComponent implements OnInit {
 
     console.log('signUp', this.signUpForm); 
     if(this.signUpForm.status === 'VALID'){
+
+      //this.signUpForm.value.userId = this.signUpForm.value.userId.toUpperCase();
       
       if(this.userList){
         this.userList.push(this.signUpForm.value);
@@ -59,10 +63,12 @@ export class LoginComponent implements OnInit {
     console.log('login', this.loginForm);
     if(this.loginForm.status === 'VALID'){
 
-      if(this.userList.some(item => (item.email === this.loginForm.get('email').value 
-        && item.password === this.loginForm.get('password').value))){
+      // this.loginForm.value.userId = this.loginForm.value.userId.toUpperCase();
 
-        this.router.navigate(['home']);
+      if(this.userList.some(item => (item.userId === this.loginForm.get('userId').value 
+        && item.password === this.loginForm.get('password').value))){  
+
+        this.router.navigate(['']);
         localStorage.setItem('currentUser',JSON.stringify(this.loginForm.value))
       }
     }

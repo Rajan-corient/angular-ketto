@@ -1,3 +1,23 @@
-<p>
-  change-box works!
-</p>
+<div class="container pt-5">
+  <form>
+    <div class="row">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="amount" name ="changeBox" class="form-control" id="changeBox">
+      </div>
+      &nbsp;&nbsp;
+      <button type="submit" (click) = "changeFunction()" class="btn btn-primary">Submit</button>
+    </div>
+    </form>
+  <div>
+
+    <ul *ngIf = "change.length > 0">
+      <li *ngFor = "let change of change">
+        <p *ngIf = "change.ten_Rs_coin">10 Rs coin : {{change.ten_Rs_coin}}</p>
+        <p *ngIf = "change.five_Rs_coin">5 Rs coin : {{change.five_Rs_coin}}</p>
+        <p *ngIf = "change.two_Rs_coin">2 Rs coin : {{change.two_Rs_coin}}</p>
+        <p *ngIf = "change.one_Rs_coin">1 Rs coin : {{change.one_Rs_coin}}</p>
+      </li>
+    </ul>
+
+  </div>
+</div>

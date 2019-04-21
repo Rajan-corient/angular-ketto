@@ -10,11 +10,15 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router :Router) { }
 
-  loggedInUser:any;
+  loggedInUser:any = {
+    userId:''
+  };
+  showButton:boolean = false;
 
   ngOnInit() {
-
-    this.loggedInUser = JSON.stringify(localStorage.getItem('currentUser'));
+    
+    this.loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(22,this.loggedInUser);
   }
 
   logout(){

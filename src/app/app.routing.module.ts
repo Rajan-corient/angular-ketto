@@ -4,24 +4,33 @@ import { AuthGuard } from './guard/auth.guard';
 import { LoginComponent } from './login/login.component';
 
 
-
 const routes: Routes = [
 
   { 
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'changeBox',
     pathMatch: 'full'
+  },
+  { 
+    path: 'changeBox',
+    loadChildren: './change-box/change-box.module#ChangeBoxModule',
+    canActivate: [AuthGuard]
   },
   { 
     path: 'home',
     loadChildren: './home/home.module#HomeModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   { 
     path: 'login',
     component: LoginComponent,
   },
-  
+  { 
+    path: 'profile',
+    loadChildren: './profile/profile.module#ProfileModule',
+    canActivate: [AuthGuard]
+  },
+ 
 ];
 
 @NgModule({
