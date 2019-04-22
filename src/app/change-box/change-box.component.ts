@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 export class ChangeBoxComponent implements OnInit {
 
   constructor() { }
-// 
+//
   amount:any;
   change:any = []
 
@@ -18,6 +18,8 @@ export class ChangeBoxComponent implements OnInit {
   }
 
   changeFunction = () => {
+
+    this.change=[];
 
     while(this.amount > 0){
 
