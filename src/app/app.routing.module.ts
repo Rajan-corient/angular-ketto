@@ -13,12 +13,12 @@ const routes: Routes = [
   },
   { 
     path: 'changeBox',
-    loadChildren: './change-box/change-box.module#ChangeBoxModule',
+    loadChildren: () => import('./change-box/change-box.module').then(m => m.ChangeBoxModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'home',
-    loadChildren: './home/home.module#HomeModule',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
     // canActivate: [AuthGuard]
   },
   { 
@@ -27,7 +27,7 @@ const routes: Routes = [
   },
   { 
     path: 'profile',
-    loadChildren: './profile/profile.module#ProfileModule',
+    loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
     canActivate: [AuthGuard]
   },
  
