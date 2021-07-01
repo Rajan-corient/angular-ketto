@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ChangeBoxComponent } from './change-box.component';
 
@@ -6,7 +6,7 @@ describe('ChangeBoxComponent', () => {
   let component: ChangeBoxComponent;
   let fixture: ComponentFixture<ChangeBoxComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ChangeBoxComponent ]
     })
