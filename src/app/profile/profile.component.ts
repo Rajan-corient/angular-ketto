@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
      this.loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
 
      this.user = this.UserList.find((element) => {
-      return element.userId = this.loggedInUser.userId;
+      return element.userId == this.loggedInUser.userId;
     });
 
     console.log(this.user);
